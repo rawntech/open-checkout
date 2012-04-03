@@ -1,0 +1,84 @@
+//	Open Checkout is an extensible point of sale software.
+//	Copyleft 2012 Open Checkout Team
+//	
+//		This file is part of Open Checkout.
+//		
+//    Open Checkout is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    Open Checkout is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with Open Checkout.  If not, see <http://www.gnu.org/licenses/>.
+//
+//	Open Checkout is derived from Openbravo POS, unmodified notice below.
+//
+////////////////////////////////////////////////////////////////////////////////
+//    Openbravo POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2007-2009 Openbravo, S.L.
+//    http://www.openbravo.com/product/pos
+//
+//    This file is part of Openbravo POS.
+//
+//    Openbravo POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    Openbravo POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with Openbravo POS.  If not, see <http://www.gnu.org/licenses/>.
+
+report = new com.opencheckout.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.InventoryDiff");
+report.setReport("/com/opencheckout/reports/inventorydiff");
+report.setResourceBundle("com/opencheckout/reports/inventorydiff_messages");
+
+report.setSentence("SELECT " +
+                "LOCATIONS.ID AS LOCATIONID, LOCATIONS.NAME AS LOCATIONNAME, " +
+                "PRODUCTS.REFERENCE, PRODUCTS.NAME, PRODUCTS.CATEGORY, CATEGORIES.NAME AS CATEGORYNAME, " +
+                "SUM(CASE WHEN STOCKDIARY.UNITS <0 THEN STOCKDIARY.UNITS ELSE 0 END) AS UNITSOUT, " +
+                "SUM(CASE WHEN STOCKDIARY.UNITS <0 THEN STOCKDIARY.UNITS * STOCKDIARY.PRICE ELSE 0 END) AS TOTALOUT, " +
+                "SUM(CASE WHEN STOCKDIARY.UNITS >=0 THEN STOCKDIARY.UNITS ELSE 0 END) AS UNITSIN, " +
+                "SUM(CASE WHEN STOCKDIARY.UNITS >=0 THEN STOCKDIARY.UNITS * STOCKDIARY.PRICE ELSE 0 END) AS TOTALIN, " +
+                "SUM(STOCKDIARY.UNITS) AS UNITSDIFF, " +
+                "SUM(STOCKDIARY.UNITS * STOCKDIARY.PRICE) AS TOTALDIFF " +
+                "FROM STOCKDIARY JOIN LOCATIONS ON STOCKDIARY.LOCATION = LOCATIONS.ID, " +
+                "PRODUCTS LEFT OUTER JOIN CATEGORIES ON PRODUCTS.CATEGORY = CATEGORIES.ID " +
+                "WHERE PRODUCTS.ID = STOCKDIARY.PRODUCT " +
+                "AND ?(QBF_FILTER) " +
+                "GROUP BY LOCATIONS.ID, LOCATIONS.NAME, PRODUCTS.REFERENCE, PRODUCTS.NAME, PRODUCTS.CATEGORY, CATEGORIES.NAME " +
+                "ORDER BY LOCATIONS.ID, CATEGORIES.NAME, PRODUCTS.NAME");
+report.addParameter("STOCKDIARY.DATENEW");
+report.addParameter("STOCKDIARY.DATENEW");
+report.addQBFFilter(new com.opencheckout.pos.reports.JParamsDatesInterval());
+report.addParameter("LOCATIONS.ID");
+report.addQBFFilter(new com.opencheckout.pos.reports.JParamsLocationWithFirst());
+report.addParameter("STOCKDIARY.REASON");
+report.addQBFFilter(new com.opencheckout.pos.reports.JParamsReason());
+
+report.addField("LOCATIONID", com.opencheckout.data.loader.Datas.STRING);
+report.addField("LOCATIONNAME", com.opencheckout.data.loader.Datas.STRING);
+report.addField("REFERENCE", com.opencheckout.data.loader.Datas.STRING);
+report.addField("NAME", com.opencheckout.data.loader.Datas.STRING);
+report.addField("CATEGORY", com.opencheckout.data.loader.Datas.STRING);
+report.addField("CATEGORYNAME", com.opencheckout.data.loader.Datas.STRING);
+report.addField("UNITSOUT", com.opencheckout.data.loader.Datas.DOUBLE);
+report.addField("TOTALOUT", com.opencheckout.data.loader.Datas.DOUBLE);
+report.addField("UNITSIN", com.opencheckout.data.loader.Datas.DOUBLE);
+report.addField("TOTALIN", com.opencheckout.data.loader.Datas.DOUBLE);
+report.addField("UNITSDIFF", com.opencheckout.data.loader.Datas.DOUBLE);
+report.addField("TOTALDIFF", com.opencheckout.data.loader.Datas.DOUBLE);
+
+report;
+

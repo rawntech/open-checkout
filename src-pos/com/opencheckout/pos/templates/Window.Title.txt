@@ -1,0 +1,1 @@
+Open Checkout is an extensible point of sale software.

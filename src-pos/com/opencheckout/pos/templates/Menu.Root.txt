@@ -1,0 +1,108 @@
+//	Open Checkout is an extensible point of sale software.
+//	Copyleft 2012 Open Checkout Team
+//	
+//		This file is part of Open Checkout.
+//		
+//    Open Checkout is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    Open Checkout is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with Open Checkout.  If not, see <http://www.gnu.org/licenses/>.
+//
+//	Open Checkout is derived from Openbravo POS, unmodified notice below.
+//
+////////////////////////////////////////////////////////////////////////////////
+//    Openbravo POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2007-2009 Openbravo, S.L.
+//    http://sourceforge.net/projects/openbravopos
+//
+//    This file is part of Openbravo POS.
+//
+//    Openbravo POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    Openbravo POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with Openbravo POS.  If not, see <http://www.gnu.org/licenses/>.
+
+    group = menu.addGroup("Menu.Main");
+    group.addPanel("/com/opencheckout/images/mycomputer.png", "Menu.Ticket", "com.opencheckout.pos.sales.JPanelTicketSales");
+    group.addPanel("/com/opencheckout/images/mycomputer.png", "Menu.TicketEdit", "com.opencheckout.pos.sales.JPanelTicketEdits");
+    group.addPanel("/com/opencheckout/images/kdmconfig.png", "Menu.CustomersPayment", "com.opencheckout.pos.customers.CustomersPayment");
+    group.addPanel("/com/opencheckout/images/mycomputer.png", "Menu.Payments", "com.opencheckout.pos.panels.JPanelPayments");
+    group.addPanel("/com/opencheckout/images/mycomputer.png", "Menu.CloseTPV", "com.opencheckout.pos.panels.JPanelCloseMoney");
+    group.addPanel("/com/opencheckout/images/appointment.png", "Menu.Closing", "/com/opencheckout/reports/closedpos.bs");
+
+    group = menu.addGroup("Menu.Backoffice");
+    submenu = group.addSubmenu("/com/opencheckout/images/contents.png", "Menu.Customers", "com.opencheckout.pos.forms.MenuCustomers");
+        submenu.addTitle("Menu.Customers");
+        submenu.addPanel("/com/opencheckout/images/kdmconfig.png", "Menu.CustomersManagement", "com.opencheckout.pos.customers.CustomersPanel");
+        submenu.addTitle("Menu.Customers.Reports");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.CustomersReport", "/com/opencheckout/reports/customers.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.CustomersBReport", "/com/opencheckout/reports/customersb.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.CustomersDiary", "/com/opencheckout/reports/customersdiary.bs");
+    submenu = group.addSubmenu("/com/opencheckout/images/contents.png", "Menu.StockManagement", "com.opencheckout.pos.forms.MenuStockManagement");
+        submenu.addTitle("Menu.StockManagement.Edit");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.Products", "com.opencheckout.pos.inventory.ProductsPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.ProductsWarehouse", "com.opencheckout.pos.inventory.ProductsWarehousePanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.Auxiliar", "com.opencheckout.pos.inventory.AuxiliarPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.Categories", "com.opencheckout.pos.inventory.CategoriesPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.Attributes", "com.opencheckout.pos.inventory.AttributesPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.AttributeValues", "com.opencheckout.pos.inventory.AttributeValuesPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.AttributeSets", "com.opencheckout.pos.inventory.AttributeSetsPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.AttributeUse", "com.opencheckout.pos.inventory.AttributeUsePanel");
+
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.Taxes", "com.opencheckout.pos.inventory.TaxPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.TaxCategories", "com.opencheckout.pos.inventory.TaxCategoriesPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.TaxCustCategories", "com.opencheckout.pos.inventory.TaxCustCategoriesPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.StockDiary", "com.opencheckout.pos.inventory.StockDiaryPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.StockMovement", "com.opencheckout.pos.inventory.StockManagement");      
+        submenu.addTitle("Menu.StockManagement.Reports");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.Products", "/com/opencheckout/reports/products.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.ProductLabels", "/com/opencheckout/reports/productlabels.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.Catalog", "/com/opencheckout/reports/productscatalog.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.Inventory", "/com/opencheckout/reports/inventory.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.Inventory2", "/com/opencheckout/reports/inventoryb.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.InventoryBroken", "/com/opencheckout/reports/inventorybroken.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.InventoryListDetail", "/com/opencheckout/reports/inventorylistdetail.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.InventoryDiff", "/com/opencheckout/reports/inventorydiff.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.InventoryDiffDetail", "/com/opencheckout/reports/inventorydiffdetail.bs");
+    submenu = group.addSubmenu("/com/opencheckout/images/contents.png", "Menu.SalesManagement", "com.opencheckout.pos.forms.MenuSalesManagement");
+        submenu.addTitle("Menu.SalesManagement.Reports");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.UserSells", "/com/opencheckout/reports/usersales.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.ClosedProducts", "/com/opencheckout/reports/closedproducts.bs");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.ReportTaxes", "/com/opencheckout/reports/taxes.bs");
+        submenu.addPanel("/com/opencheckout/images/cakes3d.png", "Menu.SalesChart", "/com/opencheckout/reports/chartsales.bs");
+        submenu.addPanel("/com/opencheckout/images/cakes3d.png", "Menu.ProductSales", "/com/opencheckout/reports/productsales.bs");
+    submenu = group.addSubmenu("/com/opencheckout/images/contents.png", "Menu.Maintenance", "com.opencheckout.pos.forms.MenuMaintenance");
+        submenu.addTitle("Menu.Maintenance.POS");        
+        submenu.addPanel("/com/opencheckout/images/kdmconfig.png", "Menu.Users", "com.opencheckout.pos.admin.PeoplePanel");
+        submenu.addPanel("/com/opencheckout/images/yast_group_add.png", "Menu.Roles", "com.opencheckout.pos.admin.RolesPanel");
+        submenu.addPanel("/com/opencheckout/images/clipart.png", "Menu.Resources", "com.opencheckout.pos.admin.ResourcesPanel");
+        submenu.addPanel("/com/opencheckout/images/gohome.png", "Menu.Locations", "com.opencheckout.pos.inventory.LocationsPanel");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.Floors", "com.opencheckout.pos.mant.JPanelFloors");
+        submenu.addPanel("/com/opencheckout/images/bookmark.png", "Menu.Tables", "com.opencheckout.pos.mant.JPanelPlaces");
+        submenu.addTitle("Menu.Maintenance.Reports");
+        submenu.addPanel("/com/opencheckout/images/appointment.png", "Menu.UsersReport", "/com/opencheckout/reports/people.bs");
+// Deprecated options.
+//        submenu.addTitle("Menu.Maintenance.ERP");
+//        submenu.addExecution("/com/opencheckout/images/opencheckout.png", "Menu.ERPProducts", "com.opencheckout.possync.ProductsSyncCreate");
+//        submenu.addExecution("/com/opencheckout/images/opencheckout.png", "Menu.ERPOrders", "com.opencheckout.possync.OrdersSyncCreate");
+    group = menu.addGroup("Menu.System");
+    group.addChangePasswordAction();
+    group.addPanel("/com/opencheckout/images/package_settings.png", "Menu.Configuration", "com.opencheckout.pos.config.JPanelConfiguration");
+    group.addPanel("/com/opencheckout/images/fileprint.png", "Menu.Printer", "com.opencheckout.pos.panels.JPanelPrinter");
+    group.addExitAction();
